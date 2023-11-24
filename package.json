@@ -1,97 +1,108 @@
 {
-  "publisher": "microhobby",
-  "name": "nuttx-helpers",
-  "displayName": "NuttX Helpers",
-  "description": "NuttX Helpesr",
-  "icon": "NuttX_logo.png",
-  "preview": true,
-  "galleryBanner": {
-    "color": "#3c34e3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microhobby/vscode-nuttx"
-  },
-  "version": "0.0.4",
-  "author": {
-    "email": "matheus@castello.eng.br",
-    "name": "Matheus Castello"
-  },
-  "extensionDependencies": [
-    "microhobby.taskrunnercodeplus",
-    "microhobby.linuxkerneldev",
-    "jeff-hykin.better-cpp-syntax",
-    "jeff-hykin.better-c-syntax",
-    "webfreak.debug"
-  ],
-  "engines": {
-    "vscode": "^1.82.0"
-  },
-  "categories": [
-    "Linters",
-    "Other"
-  ],
-  "activationEvents": [
-    "onLanguage:c"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "configuration": {
-      "title": "NuttX Helpers",
-      "properties": {
-        "nuttx.checkPatch": {
-          "type": "boolean",
-          "default": false,
-          "description": "Activate the run on checkpatch script on C opened files"
-        },
-        "nuttx.checkPatchPath": {
-          "type": "string",
-          "default": "${workspaceFolder}/tools/checkpatch.sh",
-          "description": "Path to the NuttX checkpatch script"
-        },
-        "nuttx.configureScriptPath": {
-          "type": "string",
-          "default": "${workspaceFolder}/tools/configure.sh",
-          "description": "Path to the NuttX configure script"
-        }
-      }
+    "publisher": "microhobby",
+    "name": "nuttx-helpers",
+    "displayName": "NuttX Helpers",
+    "description": "NuttX Helpesr",
+    "icon": "NuttX_logo.png",
+    "preview": true,
+    "galleryBanner": {
+        "color": "#3c34e3"
     },
-    "commands": [
-      {
-        "command": "nuttx.chooseFromConfigureList",
-        "category": "NuttX",
-        "shortTitle": "Configure List",
-        "title": "List all the NuttX configuration to choose"
-      },
-      {
-        "command": "nuttx.configureWorkspace",
-        "category": "NuttX",
-        "shortTitle": "Configure Workspace",
-        "title": "Add the conf assets to NuttX workspace"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "lint": "eslint src --ext ts",
-    "pack": "vsce package --target linux-x64"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.82.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@types/fs-extra": "^11.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.4.1",
-    "@typescript-eslint/parser": "^6.4.1",
-    "eslint": "^8.47.0",
-    "glob": "^10.3.3",
-    "mocha": "^10.2.0",
-    "typescript": "^5.1.6",
-    "@vscode/test-electron": "^2.3.4"
-  },
-  "dependencies": {
-    "fs-extra": "^11.1.1"
-  }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microhobby/vscode-nuttx"
+    },
+    "version": "0.0.4",
+    "author": {
+        "email": "matheus@castello.eng.br",
+        "name": "Matheus Castello"
+    },
+    "extensionDependencies": [
+        "microhobby.taskrunnercodeplus",
+        "microhobby.linuxkerneldev",
+        "jeff-hykin.better-cpp-syntax",
+        "jeff-hykin.better-c-syntax",
+        "webfreak.debug"
+    ],
+    "engines": {
+        "vscode": "^1.82.0"
+    },
+    "categories": [
+        "Linters",
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:c"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "NuttX Helpers",
+            "properties": {
+                "nuttx.checkPatch": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Activate the run on checkpatch script on C opened files"
+                },
+                "nuttx.checkPatchPath": {
+                    "type": "string",
+                    "default": "${workspaceFolder}/tools/checkpatch.sh",
+                    "description": "Path to the NuttX checkpatch script"
+                },
+                "nuttx.configureScriptPath": {
+                    "type": "string",
+                    "default": "${workspaceFolder}/tools/configure.sh",
+                    "description": "Path to the NuttX configure script"
+                },
+                "nuttx.customConfigureScriptPath": {
+                    "type": "string",
+                    "default": "${workspaceFolder}/tools/configure.sh",
+                    "description": "Path to the custom configure script"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "nuttx.chooseFromConfigureList",
+                "category": "NuttX",
+                "shortTitle": "Configure List",
+                "title": "List all the NuttX configuration to choose"
+            },
+            {
+                "command": "nuttx.chooseFromCustomConfigureList",
+                "category": "NuttX",
+                "shortTitle": "Configure Custom List",
+                "title": "List all the NuttX configuration to choose"
+            },
+            {
+                "command": "nuttx.configureWorkspace",
+                "category": "NuttX",
+                "shortTitle": "Configure Workspace",
+                "title": "Add the conf assets to NuttX workspace"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint src --ext ts",
+        "pack": "vsce package --target linux-x64"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.82.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@types/fs-extra": "^11.0.2",
+        "@typescript-eslint/eslint-plugin": "^6.4.1",
+        "@typescript-eslint/parser": "^6.4.1",
+        "eslint": "^8.47.0",
+        "glob": "^10.3.3",
+        "mocha": "^10.2.0",
+        "typescript": "^5.1.6",
+        "@vscode/test-electron": "^2.3.4"
+    },
+    "dependencies": {
+        "fs-extra": "^11.1.1"
+    }
 }
